@@ -1,0 +1,72 @@
+.projects {
+
+    border: 2px solid black;
+    width: 500px;
+    margin: 40px;
+    box-sizing: border-box;
+}
+
+.project-card {
+
+    border: 2px solid black;
+    width: 100%;
+    min-height: 220px;
+    /*
+    padding: 24px erzeugt innerhalb der .project-card auf allen Seiten
+    24px Abstand zwischen dem Border der Card und ihrem Inhalt.
+    Die Child-Elemente beginnen dadurch innerhalb dieses gepaddeten Content-Bereichs.
+    */
+    padding: 24px;
+    /* ohne box-sizing: border-box wäre die section mit .project-card Element wieder breiter als das main-Element mit Klasse .projects (obwohl es ja 100% width vom Parent holt 
+    also genauso breit sein sollte wie das Parent), weil bei box-sizing: content-box, was ja das default ist für box-sizing, das Padding nicht mit in die width berechnet 
+    auch wenn diese 100% vom Parent ist, d.h. das Padding von 24px rechts und links (oben und unten ist es auch aber für width nur rechts und links relevant), 
+    wird noch an die Section gehängt,  also 48px mehr als 500px, was ja die width vom main-Element ist, und durch die Prozentzahl wird die section 
+    relativ zum Parent main-Element skaliert, aber ist eben mehr als 500px weil das padding noch rangehängt wird, außer man nutzt eben box-sizing: border-box, dann
+    ist das gesamte section-Element auch mit padding 500px breit und die Elemente darin werden dementsprechend schmäler sodass es passt */
+    box-sizing: border-box;
+    /* Dieses Element soll zum Bezugspunkt für das Badge werden, ohne dass sie selbst aus dem normalen Flow genommen wird 
+    -> deswegen hier position: relative, weil: ...*/
+    position: relative;
+}
+
+.badge {
+
+    border: 1px solid black;
+    /* position: absolute nimmt das Badge aus dem normalen Document Flow.
+    Für das Badge wird dadurch kein normaler Platz mehr reserviert.
+
+    Für top/right/... sucht es nach oben nach dem nächsten Vorfahren,
+    dessen position nicht static ist.
+
+    .project-card hat position: relative und ist deshalb hier
+    der Bezugspunkt des Badges. */
+    position: absolute;
+    /* top und right positionieren das absolute Badge relativ zu seinem
+    Containing Block, hier also .project-card.
+
+    top: 12px   → 12px vom oberen Rand
+    right: 12px → 12px vom rechten Rand
+
+    Da absolute Elemente aus dem normalen Flow entfernt sind,
+    können sie andere Elemente überlagern. */
+    top: 12px;
+    right: 12px;
+    padding: 6px 10px;
+    box-sizing: border-box;
+}
+
+.actions {
+
+    margin-top: 30px;
+}
+
+/* hier jetzt nicht .button wie in der letzten Aufgabe, weil es keine Klasse button gibt wie in letzter Aufgabe (in letzter Aufgabe hatten die Buttons sogar zwei Klassen,
+.button hatten beide und dann jeweils einer .primary und .secondary noch (und diese wählt man am besten mit .button.primary und .button.secondary OHNE Leerzeichen aus) 
+was mit Leerzeichen bedeutet ist in Übung vorher*/
+button {
+
+    width: 160px;
+    padding: 10px 16px;
+    /* hiermit wird das Padding wieder in die width einberechnet, also der Content vom Button also der Text in diesem Fall */
+    box-sizing: border-box;
+}
