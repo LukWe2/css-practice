@@ -1,0 +1,50 @@
+.card {
+
+    /*
+    - box-sizing: border-box sorgt dafür, dass width die gesamte Box beschreibt.
+    - Padding und Border werden also in die 400px eingerechnet.
+    - Ohne border-box wäre nur der Content 400px breit und Padding + Border kämen noch dazu.
+    */
+    box-sizing: border-box;
+
+    /* Die gesamte Card ist 400px breit. */
+    width: 400px;
+
+    /*
+    - 2px = Dicke des Rahmens
+    - solid = durchgezogene Linie
+    - black = Farbe des Rahmens
+    */
+    border: 2px solid black;
+
+    /*
+    - Padding ist der Innenabstand zwischen Inhalt und Border.
+    - 24px gelten hier für oben, rechts, unten und links.
+    */
+    padding: 24px;
+
+    /*
+    - Margin ist der Außenabstand der Card zu anderen Elementen.
+    - 40px gelten hier für oben, rechts, unten und links.
+    */
+    margin: 40px;
+}
+
+button {
+
+    /*
+    - Margin ist Außenabstand.
+    - Der Button bekommt nur nach oben 16px Abstand zum vorherigen Element.
+    */
+    margin-top: 16px;
+
+    /*
+    - Padding ist der Innenabstand im Button.
+    - 10px = oben und unten
+    - 20px = links und rechts
+
+    Da hier kein box-sizing: border-box gesetzt ist,
+    wird dieses Padding zusätzlich zur eigentlichen Breite des Buttons gerechnet.
+    */
+    padding: 10px 20px;
+}

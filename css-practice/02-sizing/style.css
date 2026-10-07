@@ -1,0 +1,53 @@
+.profile-container {
+
+    border: 2px solid black;
+    width: 90%;
+    max-width: 900px;
+    min-height: 300px;
+    margin: 40px;
+    box-sizing: border-box;
+    
+}
+
+.profile-card {
+
+    border: 2px solid blue;
+    width: 100%;
+    max-width: 600px;
+    min-height: 200px;
+    padding: 24px;
+    box-sizing: border-box;
+
+}
+
+button {
+
+    /*
+    - width: 50% bezieht sich auf die verfügbare Breite des Containing Blocks.
+    - Hier ist das praktisch die Breite der .profile-card.
+    - Der Button soll also 50% der verfügbaren Breite der .profile-card einnehmen.
+    */
+    width: 50%;
+
+    /* Der Button darf insgesamt höchstens 250px breit werden. */
+    max-width: 250px;
+
+    /* Abstand außerhalb des Buttons nach oben. */
+    margin-top: 20px;
+
+    /*
+    - Padding ist der Innenabstand zwischen Inhalt und Rand des Buttons.
+    - 10px = oben und unten
+    - 16px = links und rechts
+
+    Ohne box-sizing: border-box:
+    width/max-width beziehen sich nur auf den Content-Bereich.
+    Padding und Border würden zusätzlich zur Breite dazukommen.
+
+    Mit box-sizing: border-box:
+    width/max-width umfassen Content + Padding + Border.
+    Der komplette Button bleibt dadurch innerhalb der angegebenen Breite.
+    */
+    box-sizing: border-box;
+    padding: 10px 16px;
+}
