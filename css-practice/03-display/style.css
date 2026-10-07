@@ -1,0 +1,83 @@
+.skills {
+
+    border: 2px solid black;
+    width: 400px;
+    padding: 24px;
+
+    /*
+    Durch border-box gehören Padding und Border bereits zu den 400px.
+    Ohne border-box wären die 400px nur der Content und die Box insgesamt größer.
+    */
+    box-sizing: border-box;
+
+    /* Margin erzeugt Abstand außerhalb der gesamten Box. */
+    margin: 40px;
+
+}
+
+.skill {
+
+    border: 1px solid black;
+
+    /*
+    inline-block wurde hier gebraucht, weil die <span>-Elemente nebeneinander
+    stehen sollen, gleichzeitig aber width und height funktionieren sollen.
+
+    inline → nebeneinander, aber width/height nur eingeschränkt
+    block → width/height funktionieren, aber Elemente beginnen in neuer Zeile
+    inline-block → kombiniert beides
+    */
+    display: inline-block;
+
+    width: 100px;
+    height: 40px;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    /* Ohne box-sizing: border-box; ist standardmäßig box-sizing: content-box eingestellt und die drei Elemente hätten
+    nicht nebeeinandergepasst, weil padding eben nicht in diese 100px width einberechnet wurde sondern seperat, ein Element
+    war somit insgesamt 126px (12px jeweils Padding + 2px border) breit und mit box-sizing: border-box 100px */
+
+    /*
+    Hier wichtig: border-box wirkt nur auf das jeweilige .skill-Element.
+    Die angegebenen 100px enthalten dadurch Content + Padding + Border.
+    */
+    box-sizing: border-box;
+}
+
+.profile-link {
+
+    border: 1px solid black;
+
+    /*
+    <a> ist standardmäßig inline.
+    Durch display: block verhält sich der Link wie ein Block-Element:
+    Er beginnt in einer neuen Zeile und width kann normal gesetzt werden.
+
+    Dass inline-block hier optisch ebenfalls darunter stehen könnte, liegt daran,
+    dass .skill-list davor bereits ein Block-Element ist. Der Link selbst wäre
+    dadurch aber noch kein Block-Element.
+    */
+    display: block;
+
+    width: 200px;
+
+    /* wenn man hier statt margin-top: 24px padding-top: 24px nimmt, dann wäre der Text zwar auch weiter unten, aber das Element
+    also der Link würde immernoch direkt unter dem div skill-list beginnen, mit margin ist zwischen den Elementen Platz
+    und das a-Element beginnt wirklich 24px weiter unten */
+
+    /*
+    Merken:
+    margin = Abstand außerhalb der Box zu anderen Elementen
+    padding = Abstand innerhalb der Box zwischen Border und Inhalt
+    */
+    margin-top: 24px;
+
+    padding: 10px;
+
+    /*
+    Durch border-box bleiben die 200px die gesamte Breite des Links.
+    Das Padding und der Border werden innerhalb dieser 200px untergebracht.
+    */
+    box-sizing: border-box;
+}

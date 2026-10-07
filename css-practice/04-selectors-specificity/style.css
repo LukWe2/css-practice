@@ -1,0 +1,112 @@
+.portfolio {
+
+    border: 2px solid black;
+
+    /* Feste Gesamtbreite der Portfolio-Box. */
+    width: 500px;
+
+    /* Außenabstand zu anderen Elementen. */
+    margin: 40px;
+
+    /* Innenabstand zwischen Border und Inhalt. */
+    padding: 24px;
+
+    /* width enthält dadurch Content + Padding + Border. */
+    box-sizing: border-box;
+}
+
+.project-card {
+
+    border: 1px solid black;
+
+    /*
+    100% bezieht sich auf die verfügbare Breite des Parent-Elements .portfolio.
+    */
+    width: 100%;
+
+    padding: 20px;
+
+    /* Abstand zwischen den einzelnen Project-Cards. */
+    margin-bottom: 20px;
+
+    /* ohne box-sizing: border-box hat Element ja standardmäßig box-sizing: content-box und das Padding wird jeweils noch
+    an die Breite der Section angerechnet, somit wäre es über den Rand von .portfolio hinaus gegangen, mit box-sizing: border-box
+    aber nicht, weil dann in der Gesamtbreite eben die Paddings schon mit drin sind*/
+    box-sizing: border-box;
+}
+
+/* hier würde auch nur .featured gehen, weil es sonst keine Elemente mit einer class="featured" Klasse gibt, aber wenn es diese auch
+außerhalb von .project-card gäbe, und diese nicht mit so gestylt werden sollen, dann muss man es wie hier machen mit der
+ersten Klasse und OHNE Leerzeichen, mit Leerzeichen wäre ein Aufruf von Klasse innerhalb einer Parent Klasse (deren Elemente natürlich)
+
+Außerdem: nur .featured würde die border-Regel hier ebenfalls überschreiben,
+aber nur weil .featured und .project-card gleich spezifisch sind
+und .featured danach im CSS steht.
+
+.project-card.featured ist spezifischer als .project-card.
+Deshalb wird die Überschreibung hier über Spezifität geregelt. */
+.project-card.featured {
+
+    /*
+    Kein Leerzeichen:
+    Dasselbe Element muss gleichzeitig .project-card UND .featured besitzen.
+    */
+    border: 3px solid blue;
+}
+
+/*Nur .description innerhalb der .project-card, nicht p mit class="description" außerhalb der Section mit class project-card*/
+.project-card .description {
+
+    /*
+    Leerzeichen = Nachfahrenselektor:
+    .description darf auch mehrere Ebenen tief innerhalb von .project-card liegen.
+    */
+    margin-bottom: 20px;
+}
+
+/*Nur direkte <p>-Children von .project-card, nicht das p innerhalb von <div class="details">*/
+.project-card > p {
+
+    /*
+    > = Child-Selektor:
+    Das <p> muss genau eine Ebene unter .project-card liegen.
+    */
+    border: 1px dashed gray;
+}
+
+.button {
+
+    /*
+    Basisklasse für alle Elemente mit class="button".
+    Gemeinsames Styling wird hier definiert.
+    */
+    padding: 10px 16px;
+    box-sizing: border-box;
+    width: 150px;
+}
+
+.button.primary {
+
+    /*
+    Theoretisch würde hier auch .primary funktionieren:
+    .primary { ... }
+
+    .button.primary ist aber gezielter:
+    Dasselbe Element muss gleichzeitig .button UND .primary besitzen.
+    Dadurch werden andere .primary-Elemente außerhalb von Buttons nicht mitgestylt.
+    */
+    border: 2px solid blue;
+}
+
+.button.secondary {
+
+    /*
+    Theoretisch würde hier auch .secondary funktionieren:
+    .secondary { ... }
+
+    .button.secondary ist aber gezielter:
+    Dasselbe Element muss gleichzeitig .button UND .secondary besitzen.
+    Dadurch werden andere .secondary-Elemente außerhalb von Buttons nicht mitgestylt.
+    */
+    border: 2px solid gray;
+}
